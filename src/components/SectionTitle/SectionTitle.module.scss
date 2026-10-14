@@ -1,0 +1,47 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  width: 100%;
+  font-size: 30px;
+  font-weight: $fw-bold;
+  color: $color-primary;
+  text-align: center;
+  white-space: nowrap;
+
+  &::before,
+  &::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: $color-border;
+  }
+
+  @include respond-to($bp-tablet) {
+    font-size: 22px;
+    gap: 16px;
+  }
+}
+
+.link {
+  @include focus-ring;
+  font-size: 14px;
+  color: $color-text;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+
+  &:hover {
+    color: $color-primary;
+  }
+}

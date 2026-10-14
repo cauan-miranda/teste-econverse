@@ -1,0 +1,75 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+// Imagem exportada do Figma em 2x (2876x780) -> 390px de altura no layout de 1440px.
+// O gradiente escurece o lado esquerdo para garantir contraste do texto.
+.hero {
+  min-height: 390px;
+  display: flex;
+  align-items: center;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.35) 45%, rgba(0, 0, 0, 0) 75%),
+    url('../../assets/hero-banner.jpg') center / cover no-repeat;
+  background-color: #0b1030;
+  color: $color-white;
+
+  @include respond-to($bp-tablet) {
+    min-height: 360px;
+  }
+}
+
+.content {
+  @include container;
+}
+
+.title {
+  max-width: 560px;
+  font-size: 48px;
+  font-weight: $fw-semibold;
+  line-height: 1.15;
+
+  @include respond-to($bp-tablet) {
+    font-size: 32px;
+  }
+}
+
+.subtitle {
+  margin-top: 16px;
+  font-size: 32px;
+  font-weight: $fw-regular;
+
+  strong {
+    color: $color-secondary;
+    font-weight: $fw-bold;
+  }
+
+  @include respond-to($bp-tablet) {
+    font-size: 22px;
+  }
+}
+
+.button {
+  @include focus-ring;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+  width: 248px;
+  height: 64px;
+  border-radius: $radius-md;
+  background: $color-secondary;
+  color: $color-dark-purple;
+  font-size: 20px;
+  font-weight: $fw-semibold;
+  transition: background $transition;
+
+  &:hover {
+    background: $color-secondary-dark;
+  }
+
+  @include respond-to($bp-tablet) {
+    width: 180px;
+    height: 52px;
+    font-size: 16px;
+  }
+}

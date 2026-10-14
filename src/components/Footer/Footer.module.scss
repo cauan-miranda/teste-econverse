@@ -1,0 +1,90 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.footer {
+  background: $color-white;
+}
+
+.inner {
+  @include container;
+  display: grid;
+  grid-template-columns: 2fr repeat(3, 1fr);
+  gap: 32px;
+  padding-top: 64px;
+  padding-bottom: 64px;
+
+  @include respond-to($bp-tablet) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include respond-to($bp-mobile) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.about {
+  max-width: 280px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: $color-text-light;
+}
+
+.socials {
+  display: flex;
+  gap: 16px;
+}
+
+.social {
+  @include focus-ring;
+  display: flex;
+  transition: opacity $transition;
+
+  img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+  }
+
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+.column ul {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.columnTitle {
+  margin-bottom: 16px;
+  font-size: 16px;
+  font-weight: $fw-bold;
+  color: $color-primary;
+}
+
+.link {
+  @include focus-ring;
+  font-family: $font-work-sans;
+  font-size: 14px;
+  color: $color-text-light;
+  transition: color $transition;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.copyright {
+  padding: 16px;
+  border-top: 1px solid $color-border;
+  text-align: center;
+  font-size: 12px;
+  color: $color-muted;
+}

@@ -1,0 +1,131 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+$cards-per-view: 4;
+$card-gap: 16px;
+
+.showcase {
+  @include container;
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin-bottom: 32px;
+}
+
+.tab {
+  @include button-reset;
+  @include focus-ring;
+  padding: 8px 16px;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  font-size: 16px;
+  font-weight: $fw-regular;
+  text-transform: uppercase;
+  color: $color-text;
+  transition:
+    color $transition,
+    border-color $transition;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.tabActive {
+  border-color: $color-primary;
+  color: $color-primary;
+  font-weight: $fw-bold;
+}
+
+.carousel {
+  position: relative;
+}
+
+.track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - #{$card-gap * ($cards-per-view - 1)}) / #{$cards-per-view});
+  gap: $card-gap;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding: 12px 8px;
+  margin: 0 -8px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @include respond-to($bp-desktop) {
+    grid-auto-columns: calc((100% - #{$card-gap * 2}) / 3);
+  }
+
+  @include respond-to($bp-tablet) {
+    grid-auto-columns: calc((100% - #{$card-gap}) / 2);
+  }
+
+  @include respond-to($bp-mobile) {
+    grid-auto-columns: 85%;
+  }
+}
+
+.slide {
+  scroll-snap-align: start;
+}
+
+.arrow {
+  @include button-reset;
+  @include focus-ring;
+  @include flex-center;
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  transform: translateY(-50%);
+  color: $color-text;
+  transition: color $transition;
+
+  &:hover {
+    color: $color-primary;
+  }
+
+  svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  @include respond-to($bp-tablet) {
+    background: $color-white;
+    border-radius: 50%;
+    box-shadow: $shadow-card;
+  }
+}
+
+.prev {
+  left: -48px;
+
+  @include respond-to($bp-wide + 120px) {
+    left: -8px;
+  }
+}
+
+.next {
+  right: -48px;
+
+  @include respond-to($bp-wide + 120px) {
+    right: -8px;
+  }
+}
+
+.status {
+  padding: 48px 0;
+  text-align: center;
+  color: $color-muted;
+}

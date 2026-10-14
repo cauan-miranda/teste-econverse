@@ -1,0 +1,99 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 24px 16px 16px;
+  background: $color-white;
+  border-radius: $radius-md;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+  transition:
+    box-shadow $transition,
+    transform $transition;
+
+  &:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.16);
+    transform: translateY(-2px);
+  }
+}
+
+.trigger {
+  @include button-reset;
+  @include focus-ring;
+  display: flex;
+  justify-content: center;
+}
+
+.image {
+  width: 228px;
+  height: 228px;
+  object-fit: contain;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-top: 24px;
+}
+
+.name {
+  font-size: 15px;
+  font-weight: $fw-light;
+  line-height: 1.5;
+  color: $color-text-light;
+  min-height: 42px;
+}
+
+.prices {
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+}
+
+.listPrice {
+  font-size: 12px;
+  font-weight: $fw-regular;
+  color: $color-muted;
+}
+
+.price {
+  font-size: 20px;
+  font-weight: $fw-bold;
+  color: $color-text;
+}
+
+.installments {
+  margin-top: 4px;
+  font-size: 12px;
+  font-weight: $fw-regular;
+  color: $color-text-light;
+}
+
+.shipping {
+  margin-top: 8px;
+  margin-bottom: 16px;
+  font-size: 12px;
+  font-weight: $fw-regular;
+  color: $color-primary;
+}
+
+.buy {
+  @include button-reset;
+  @include focus-ring;
+  margin-top: auto;
+  height: 40px;
+  border-radius: $radius-sm;
+  background: $color-primary;
+  color: $color-white;
+  font-size: 14px;
+  font-weight: $fw-bold;
+  text-transform: uppercase;
+  transition: background $transition;
+
+  &:hover {
+    background: $color-primary-dark;
+  }
+}

@@ -1,0 +1,44 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.brands {
+  @include container;
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+.title {
+  margin-bottom: 32px;
+  font-size: 30px;
+  font-weight: $fw-bold;
+  color: $color-primary;
+}
+
+.list {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  overflow-x: auto;
+  padding: 16px 8px;
+  margin: 0 -8px;
+}
+
+.brand {
+  @include flex-center;
+  @include focus-ring;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: $color-white;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+  transition: transform $transition;
+
+  &:hover {
+    transform: scale(1.04);
+  }
+
+  @include respond-to($bp-tablet) {
+    width: 140px;
+    height: 140px;
+  }
+}
